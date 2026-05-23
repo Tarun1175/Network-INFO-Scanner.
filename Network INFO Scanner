@@ -1,0 +1,26 @@
+import socket
+import platform
+import requests
+
+print("=== Network Information Scanner ===\n")
+
+# Hostname
+hostname = socket.gethostname()
+print("Hostname:", hostname)
+
+# Local IP
+local_ip = socket.gethostbyname(hostname)
+print("Local IP Address:", local_ip)
+
+# System Info
+print("System:", platform.system())
+print("Release:", platform.release())
+
+# Public IP
+try:
+    public_ip = requests.get("https://api.ipify.org").text
+    print("Public IP Address:", public_ip)
+except:
+    print("Could not fetch public IP")
+
+print("\nScan Complete.")
